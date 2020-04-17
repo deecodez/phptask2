@@ -3,7 +3,7 @@
 require_once('functions/alert.php');
 require_once('functions/redirect.php');
 require_once('functions/token.php');
-require_once('functions/user.php');
+require_once('functions/admin.php');
 
 $errorCount = 0;
 
@@ -26,18 +26,18 @@ if($errorCount > 0)
     
     set_alert('error',$session_error);
       
-    redirect_to("login.php");
+    redirect_to("adminlogin.php");
 
 }
 else
 {
   
      
-    $currentUser = find_user($email);
+    $currentUser = find_admin($email);
 
         if($currentUser){
           //check the user password.
-          $userString = file_get_contents("db/users/".$currentUser->email . ".json");
+          $userString = file_get_contents("db/admin/".$currentUser->email . ".json");
           $userObject = json_decode($userString);
           $passwordFromDB = $userObject->password;
   
@@ -45,20 +45,13 @@ else
               
           if($passwordFromDB == $passwrodFromUser)
           {
-              //redicrect to dashboard
-                  $_SESSION['loggedIn'] = $userObject->id; 
+              //redicrect to dashboard 
                   $_SESSION['email'] = $userObject->email;
-                  $_SESSION['fullname'] = $userObject->first_name . " " . $userObject->last_name;
-                  $_SESSION['role'] = $userObject->designation;
-                  // $_SESSION['first_name'] = $first_name;
-               $_SESSION['datereg'] = $userObject->datereg;
-            //    $lastlogin  = fetchdate($_SESSION['email']);
+                  
 
-            if($userObject->designation == 'Patient'){
-                redirect_to("patient.php");
-            }else{
-                redirect_to("medicalteam.php"); 
-            }
+            
+                redirect_to("admin.php"); 
+            
                 
                 die();
             }
@@ -68,7 +61,7 @@ else
     
 
     set_alert('error',"Invalid Email or Password");
-    redirect_to("login.php");
+    redirect_to("adminlogin.php");
     die();
 
 }
