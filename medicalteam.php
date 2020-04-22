@@ -25,6 +25,11 @@ function fetchDate($email)
     <div class="row mt-5">
     <h3>Dashboard</h3>
         <div class="dashboard">
+
+
+        <div class="dashboard_btn mt-3 mb-5 text-center">
+            <a class="btn btn-bg btn_book btn-outline-primary" href="viewappointment.php">View Appointments</a> 
+            </div>
             
             <p>Welcome Back,</p>
             <p>Full-Name : <strong><?php echo $_SESSION['fullname'] ?></strong></p>
@@ -40,9 +45,6 @@ function fetchDate($email)
             <hr>
             <p>Date of Registartion: <strong><?php echo $_SESSION['datereg'] ?></strong></p>
              
-
-
-              
 
         </div>
 

@@ -2,16 +2,16 @@
  require_once('functions/alert.php');
  require_once('functions/redirect.php');
 
- if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
-    // redirect to dashboard
-    if($userObject->designation == 'Patient'){
-        redirect_to("patient.php");
-    }else{
-        redirect_to("medicalteam.php"); 
-    }
+//  if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
+//     // redirect to dashboard
+//     if($userObject->designation == 'Patient'){
+//         redirect_to("patient.php");
+//     }else{
+//         redirect_to("medicalteam.php"); 
+//     }
         
-        die();
-    }
+//         die();
+//     }
 
  
  ?>
@@ -29,7 +29,7 @@
 
             <p>All Fileds are required</p>
 
-            <form action="processregister.php" method="POST">
+            <form action="processadduser.php" method="POST">
 
                 <p>
                     <?php  print_alert(); ?>
@@ -163,7 +163,8 @@
                 </p>
 
                 <p>
-                   Already have an account?  <a href="login.php">Login</a>
+                    <a href="forgot.php">Forgot Password</a><br />
+                    <a href="login.php">Already have an account? Login</a>
                 </p>
 
             </div>

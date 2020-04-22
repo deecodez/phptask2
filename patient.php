@@ -33,9 +33,17 @@ function fetchDate($email)
     
     <h3>Dashboard</h3>
         <div class="dashboard">
-            
-            <p>Welcome Back,</p>
 
+            
+           
+
+            <div class="dashboard_btn mt-3 mb-5 text-center">
+            <a class="btn btn-bg btn_pay_bills btn-outline-secondary mr-5" href="paybills.php">Pay Bills</a>
+            <a class="btn btn-bg btn_book btn-outline-primary" href="bookappointment.php">Book Appointment</a> 
+            </div>
+
+
+            <p class="">Welcome Back,</p>
             <p>Your ID is : <strong><?php echo $_SESSION['loggedIn'] ?></strong></p>
             <hr>
             <p>This Account is register under <strong><?php echo $_SESSION['fullname'] ?></strong></p>
@@ -52,14 +60,7 @@ function fetchDate($email)
             <hr>
             <p>Date of Registartion: <strong><?php echo $_SESSION['datereg'] ?></strong></p>
 
-            <p>
-                    <button class="btn btn-sm btn-primary" type="submit">PAY BILLS</button>
-                </p>
-
-                <li class="nav-item">
-        <a class="nav-link" href="bookappointment.php">Book Appointment</a>
-      </li> 
-
+          
              
 
 

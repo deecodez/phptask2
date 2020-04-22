@@ -15,7 +15,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
 	<div class="container">
   <!-- Brand -->
-  <a class="navbar-brand" href="index.php"><span>BrainAcademy</span></a>
+  <a class="navbar-brand" href="index.php"><span>StartNg Hospital</span></a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -38,7 +38,7 @@
 
       <?php }else{ ?>
         <li class="nav-item">
-        <a class="nav-link" href="dashboard.php">Dashboard</a>
+        <a class="nav-link" href="patient.php">Dashboard</a>
       </li> 
         <li class="nav-item">
         <a class="nav-link" href="reset.php">Reset Password</a>

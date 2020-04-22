@@ -1,36 +1,45 @@
-<?php include_once('lib/header.php');  
-require_once('functions/alert.php'); ?>
+<?php 
+
+include_once('lib/header.php');  
+require_once('functions/alert.php'); 
+?>
    
 
-<div class="container mt-5">
-    <div class="row mt-5">
+<div class="container login_page">
+    <div class="row">
+        <div class="card login_card">
 
-        <div class="col-md-3 offset-md-3">
-   <h3>Forgot Password</h3>
-   <p>Provide the email address associated with your account</p>
-
-   <form action="processforgot.php" method="POST">
-   <p>
-        <?php print_alert() ; ?>
-    </p>
-   <p>
-        <label>Email</label><br />
-        <input
         
-        <?php              
-            if(isset($_SESSION['email'])){
-                echo "value=" . $_SESSION['email'];                                                             
-            }                
-        ?>
+            <h3>Forgot Password</h3>
 
-            type="text" name="email" placeholder="Email"  />
-    </p>
-    <p>
-        <button type="submit">Send Reset Code</button>
-    </p>
-   </form>
+            <p style="font-size: 12px;" class="text-center"><b>Provide the email address associated <br>with your account</b></p>
+
+            <p><?php print_alert() ; ?></p>
+
+            <form action="processforgot.php" method="POST">
+            <div class="form_details">
+   
+  
+                <p>
+                    <label>Email</label><br />
+                        <input
+        
+                        <?php              
+                        if(isset($_SESSION['email'])){
+                        echo "value=" . $_SESSION['email'];                                                             
+                        }                
+                    ?>
+
+                    type="text" name="email" placeholder="Email"  />
+                </p>
+
+                <p>
+                <button class="btn btn-sm btn-primary" type="submit">Send Reset Code</button>
+                </p>
+                    </div>
+            </form>
         </div>
-        </div>
-        </div>
+    </div>
+</div>
     
 <?php include_once('lib/footer.php'); ?>

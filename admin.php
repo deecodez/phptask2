@@ -32,11 +32,11 @@ function fetchDate($email)
             
             <p>Welcome Back,</p>
 
-            <p>Your ID is : <strong><?php echo $_SESSION['loggedIn'] ?></strong></p>
+            <!-- <p>Your ID is : <strong><?php echo $_SESSION['loggedIn'] ?></strong></p> -->
             <hr>
-            <p>This Account is register under <strong><?php echo $_SESSION['fullname'] ?></strong></p>
+            <!-- <p>This Account is register under <strong><?php echo $_SESSION['fullname'] ?></strong></p> -->
             <hr>
-            <p>Apppoinmnet not found </p>
+            <!-- <p>Apppoinmnet not found </p> -->
             <hr>
             
             <!-- <p>Your are logged in as: <strong><?php echo $_SESSION['role'] ?></strong></p>
@@ -44,17 +44,16 @@ function fetchDate($email)
            
             <p>Email: <strong><?php echo $_SESSION['email'] ?></strong></p>
             <hr>
-            <p>Last Login: <strong><?php echo $lastlogin  = fetchdate($_SESSION['email']);?></strong></p>
+            <!-- <p>Last Login: <strong><?php echo $lastlogin  = fetchdate($_SESSION['email']);?></strong></p> -->
             <hr>
-            <p>Date of Registartion: <strong><?php echo $_SESSION['datereg'] ?></strong></p>
+            <!-- <p>Date of Registartion: <strong><?php echo $_SESSION['datereg'] ?></strong></p> -->
 
             <p>
-                    <button class="btn btn-sm btn-primary" type="submit">PAY BILLS</button>
+                    <a href="adduser.php"><button  class="btn btn-sm btn-primary" type="submit">ADD USERS</button></a>
                 </p>
 
-                <li class="nav-item">
-        <a class="nav-link" href="bookappointment.php">Book Appointment</a>
-      </li> 
+                <a href="adduser.php"><button  class="btn btn-sm btn-primary" type="submit">VIEW ALL STAFFS</button></a>
+      <a href="adduser.php"><button  class="btn btn-sm btn-primary" type="submit">VIEW AALL PATIENTS</button></a>
 
              
 

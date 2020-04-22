@@ -60,37 +60,51 @@ nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
     }
 
 
-    body, html {
-    height: 100%;
+body{
+    background: #CBD5E0;
 }
-    
-/* 
-#hero{
-    margin-top:20rem;
-} */
+
   
-    
-    /* The hero image */
-    .hero-image {
-      /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-      background: linear-gradient(rgba(0, 0, 225, 0.9), rgba(0, 0, 225, 0.9));
-      
-      /* Set a specific height */
-      height: 100%;
-    
-      /* Position and center the image to scale nicely on all screens */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
+   
+
+    .table_content{
+        padding-top: 10rem;
     }
-    
-    /* Place text in the middle of the image */
-    .hero-text {
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
+
+    .login_card{
+        min-width: 18rem;
+        min-height: 10rem;
+        background-color: white;
+    }
+
+    .login_page{
+        padding-left: 23rem;
+        padding-top: 10rem;
+    }
+    .form_details{
+        padding-left: 2rem;
+    }
+
+    .home_page{
+        padding-left: 23rem;
+        padding-top: 15rem;
+    }
+    .home_button{
+        padding-left: 5rem;
+    }
+
+   
+
+    .btn_pay_bills{
+        background-color:#007BFF;
+        color: white;
+    }
+    .btn_pay_bills:hover{
+        background-color:#007BFF;
+        color: white;
+    }
+
+    .btn_book{
+        background-color:#007BFF;
+        color: white; 
     }
