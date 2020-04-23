@@ -39,6 +39,9 @@ function fetchDate($email)
             <p>Your are logged in as: <strong><?php echo $_SESSION['role'] ?></strong></p>
             <hr>
            
+            <p>Department: <strong><?php echo $_SESSION['department'] ?></strong></p>
+            <hr>
+           
             <p>Email: <strong><?php echo $_SESSION['email'] ?></strong></p>
             <hr>
             <p>Last Login: <strong><?php echo $lastlogin  = fetchdate($_SESSION['email']);?></strong></p>

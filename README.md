@@ -7,7 +7,6 @@ Clone The repo folder into the root folder of your local host
 Run it localy using localhost/phptask2
 
 For the Superadmin, 
-visit localhost/phptask2/adminlogin.php
 Use
 email: admin@snh.com
 password: pass

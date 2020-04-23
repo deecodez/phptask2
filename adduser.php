@@ -2,16 +2,16 @@
  require_once('functions/alert.php');
  require_once('functions/redirect.php');
 
-//  if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
-//     // redirect to dashboard
-//     if($userObject->designation == 'Patient'){
-//         redirect_to("patient.php");
-//     }else{
-//         redirect_to("medicalteam.php"); 
-//     }
+ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
+    // redirect to dashboard
+    if($userObject->designation == 'Patient'){
+        redirect_to("patient.php");
+    }else{
+        redirect_to("medicalteam.php"); 
+    }
         
-//         die();
-//     }
+        die();
+    }
 
  
  ?>
@@ -25,7 +25,7 @@
 
             <h3>Register</h3>
 
-            <p><strong>Welcome, Please Register</strong></p>
+            <p><strong>Welcome, Please Register a User</strong></p>
 
             <p>All Fileds are required</p>
 
@@ -159,13 +159,10 @@
                
 
                 <p>
-                    <button class="btn btn-sm btn-primary" type="submit">Register</button>
+                    <button class="btn btn-sm btn-primary" type="submit">Add User</button>
                 </p>
 
-                <p>
-                    <a href="forgot.php">Forgot Password</a><br />
-                    <a href="login.php">Already have an account? Login</a>
-                </p>
+                
 
             </div>
         </div>

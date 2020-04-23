@@ -11,8 +11,12 @@ require_once('functions/alert.php');
   
   <h3>Welcome to Startng Hospital</h3>
   <div class="mt-4 mr-5 home_button">
+  
+      <?php if(!isset($_SESSION['loggedIn'])){ ?>
     <a class="btn btn-bg btn-outline-secondary mr-5" href="login.php">Login</a>
     <a class="btn btn-bg btn-outline-primary" href="register.php">Register</a> 
+    <?php }else{ ?>
+      <?php } ?>
   </div>           
         
 </div>

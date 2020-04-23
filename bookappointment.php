@@ -2,6 +2,8 @@
  require_once('functions/alert.php');
  require_once('functions/redirect.php');
  require_once('functions/user.php');
+
+ 
  if(!isset($_SESSION['loggedIn'])){
     // redirect to dashboard
     $_SESSION["error"] = "You can't book an appointment without login ";
@@ -41,6 +43,17 @@
                 </p>
 
                 <p>
+                    <label>last Name</label><br />
+                    <input
+                    <?php              
+                    if(isset($_SESSION['last_name'])){
+                        echo "value=" . $_SESSION['last_name'];                                                             
+                    }                
+                ?>
+                    type="text" class="form-control" name="last_name" placeholder="Last Name" pattern="[a-zA-Z][a-zA-Z ]{2,}" />
+                </p>
+
+                <p>
                     <label>Email</label><br />
                     <input
                     <?php              
@@ -68,8 +81,8 @@
                         <option value="">Select One</option>
                         <option
                         <?php              
-                        if(isset($_SESSION['email']) && $_SESSION['gender'] == 'selected'){
-                            echo "gender";                                                           
+                        if(isset($_SESSION['gender']) && $_SESSION['gender'] == 'Female'){
+                            echo "selected";                                                           
                         }                
                         ?>
                         >Female</option>
@@ -174,8 +187,13 @@
                 
 
             <p>
+                <label>Initial Complaint</label>
+                <textarea class="form-control" name="initial_complaint" id="initial_complaint" cols="30" rows="10"></textarea>
+            </p>
+
+            <p>
                 <label>Appointment Reasons</label>
-                <textarea class="form-control" name="" id="appoinment_reason" cols="30" rows="10"></textarea>
+                <textarea class="form-control" name="appoinment_reason" id="appoinment_reason" cols="30" rows="10"></textarea>
             </p>
 
             <p>

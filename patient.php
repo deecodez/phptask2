@@ -31,14 +31,14 @@ function fetchDate($email)
 <div class="container">
     <div class="row mt-5">
     
-    <h3>Dashboard</h3>
+        <h3>Dashboard</h3>
         <div class="dashboard">
 
             
            
 
             <div class="dashboard_btn mt-3 mb-5 text-center">
-            <a class="btn btn-bg btn_pay_bills btn-outline-secondary mr-5" href="paybills.php">Pay Bills</a>
+                    <a class="btn btn-bg btn_pay_bills btn-outline-secondary mr-5" href="paybills.php">Pay Bills</a>
             <a class="btn btn-bg btn_book btn-outline-primary" href="bookappointment.php">Book Appointment</a> 
             </div>
 
@@ -51,8 +51,8 @@ function fetchDate($email)
             <p>Apppoinmnet not found </p>
             <hr>
             
-            <!-- <p>Your are logged in as: <strong><?php echo $_SESSION['role'] ?></strong></p>
-            <hr> -->
+            <p>Department: <strong><?php echo $_SESSION['department'] ?></strong></p>
+            <hr>
            
             <p>Email: <strong><?php echo $_SESSION['email'] ?></strong></p>
             <hr>

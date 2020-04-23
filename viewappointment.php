@@ -3,81 +3,99 @@
     require_once('functions/user.php');
     require_once('functions/alert.php');
 
-    $appointmentlist = scandir("db/appointment/");
+
+  
+    // Scan appointment and user database
+    $allAppointmentlist = scandir("db/appointment/");
     $userlist = scandir("db/users/");
 
-
+     
     echo "
     <div class='table_content'>
     <table class='table table-striped table-bordered table-hover'>
-    <tr style='background-color: #344955; color: white'>
+    <tr style='background-color: grey; color: blue'>
         <th >Name</th>
-        <th >Appointment Date</th>
-        <th>Nature of Appointment</th>
-        <th >Initial Complaint</th>
-        <th >Department</th>
-        <th >Register Date</th>
-        <th >Preview</th>
+        <th >Appointment Date & Time</th>
+        <th>Phone Number & Email</th>
+        <th>Appoinment Reason</th>
+        <th>Initial Complaint</th>
+        <th>Department</th>
+        <th>Register Date</th>
     </tr>";
 
-$doctorEmail = $_SESSION['loggedIn'].".json";
 
-//Search for Doctor's department
+
+
+
+//Search For Medical team department
+$medicalTeamEmail = $_SESSION['email'].".json";
 for($i =2; $i < count($userlist); $i++){
-    if($doctorEmail == $userlist[$i]){
-        $doctorString = file_get_contents("db/users/". $userlist[$i]);
-        $doctorObject = json_decode($doctorString);
-        $doctordepartment = $doctorObject ->department;
-        for($count=2; $count < count($appointmentlist); $count++){
+    if($medicalTeamEmail == $userlist[$i]){
+        $medicalTeamString = file_get_contents("db/users/". $userlist[$i]);
+        $medicalTeamObject = json_decode($medicalTeamString);
+       
+        $medicalTeamDepartment = $medicalTeamObject ->department;
+       
+        for($count=2; $count < count($allAppointmentlist); $count++){
             $countPatient ="";
-            //get the list of all appointments
-            $appointmentString = file_get_contents("db/appointment/". $appointmentlist[$count]);
+
+
+            //To get all Appointment in database
+            $appointmentString = file_get_contents("db/appointment/". $allAppointmentlist[$count]);
             $appointmentObject = json_decode($appointmentString);
+            
+            
             $appointmentdepartment = $appointmentObject ->department;
-            //if($appointmentString == )
-            //chechk if department patient have appointment with is the same as doctor department
-            if($doctordepartment == $appointmentdepartment){
+       
+           
+
+            //Checking if medicalteam department matches with patient 
+            if($medicalTeamDepartment == $appointmentdepartment){
+                
                 $countPatient = $count;
-                $appointmentdate = $appointmentObject ->doa;
-                $appointmenttime = $appointmentObject ->toa;
-                $nature_of_appointment = $appointmentObject ->nature_of_appointment;
-                $complaint = $appointmentObject ->complaint;
-                $dateRegister = $appointmentObject ->date;
+                $doa = $appointmentObject ->doa;
+                $toa = $appointmentObject ->toa;
+                $appoinment_reason = $appointmentObject ->appoinment_reason;
+                $initial_complaint = $appointmentObject ->initial_complaint;
+                $phoneno = $appointmentObject ->phoneno;
+                $dateRegister = $appointmentObject ->datereg;
                 $email = $appointmentObject ->email;
 
                 //get patient data from user table
-                $patientString = file_get_contents("db/users/".$email.".json");
+                $patientString = file_get_contents("db/users/". email.".json");
                 $patientObject = json_decode($patientString);
-                $firstname = $patientObject ->firstname;
-                $lastname = $patientObject ->lastname;
+                $firstname = $patientObject ->first_name;
+                $lastname = $patientObject ->last_name;
                 $email = $patientObject ->email;
                 $gender = $patientObject ->gender;
                 $department = $patientObject ->department;
                 $designation = $patientObject ->designation;
+                $datereg = $patientObject ->datereg;
                 $id = $patientObject ->id;
-                $_SESSION['patientemail'] = $email;
+
+                
+
+                $_SESSION['email'] = $email;
                 echo "<tr>
                 <td >".$firstname." ".$lastname."</td>
-                <td >".$appointmentdate. " ".$appointmenttime."</td>
-                <td >".$nature_of_appointment."</td>
-                <td >".$complaint."</td>
-                <td >".$doctordepartment."</td>
-                <td >".$dateRegister."</td>
-                <td>
-                    <a href='patientview.php'>
-                        hhh
-                        </a>
-                </td>".
+                <td >".$doa." ".$toa."</td>
+                <td >".$phoneno." | ".$email."</td>
+                <td >".$appoinment_reason."</td>
+                <td >".$initial_complaint."</td>
+                <td >".$medicalTeamDepartment."</td>
+                <td >".$datereg."</td>
+               
+                ".
                 "</tr>";
             }
         }
     }
-    //die();
+    // die();
 }
 echo "</table> </div>"
 
 ;
-//display when no patient department matches doctor department
+//Error message when no patients department matches the Medical Team department
 echo  "<strong><span style='color: red'>You have no pending appointments!</span></strong></div>";
 ?>
     

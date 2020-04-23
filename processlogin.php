@@ -50,14 +50,16 @@ else
                   $_SESSION['email'] = $userObject->email;
                   $_SESSION['fullname'] = $userObject->first_name . " " . $userObject->last_name;
                   $_SESSION['role'] = $userObject->designation;
-                  // $_SESSION['first_name'] = $first_name;
+                  $_SESSION['department'] = $userObject->department;
                $_SESSION['datereg'] = $userObject->datereg;
-            //    $lastlogin  = fetchdate($_SESSION['email']);
 
             if($userObject->designation == 'Patient'){
                 redirect_to("patient.php");
-            }else{
+            }else if($userObject->designation == 'Medical Team (MT)'){
                 redirect_to("medicalteam.php"); 
+            }
+            else{
+                redirect_to("admin.php");
             }
                 
                 die();
