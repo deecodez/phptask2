@@ -49,14 +49,19 @@ else
                   $_SESSION['loggedIn'] = $userObject->id; 
                   $_SESSION['email'] = $userObject->email;
                   $_SESSION['fullname'] = $userObject->first_name . " " . $userObject->last_name;
-                  $_SESSION['class'] = $userObject->class;
-                  $_SESSION['role'] = $userObject->position;
+                  $_SESSION['role'] = $userObject->designation;
                   $_SESSION['department'] = $userObject->department;
-                 
-                  // $_SESSION['first_name'] = $first_name;
                $_SESSION['datereg'] = $userObject->datereg;
-            //    $lastlogin  = fetchdate($_SESSION['email']);
-                redirect_to("dashboard.php");
+
+            if($userObject->designation == 'Patient'){
+                redirect_to("patient.php");
+            }else if($userObject->designation == 'Medical Team (MT)'){
+                redirect_to("medicalteam.php"); 
+            }
+            else{
+                redirect_to("admin.php");
+            }
+                
                 die();
             }
           

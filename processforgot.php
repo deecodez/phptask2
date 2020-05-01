@@ -22,8 +22,7 @@ if($errorCount > 0){
     $session_error .=   " in your form submission";
 
     set_alert('error', $session_error);
-
-    header("Location: forgot.php");
+    redirect_to("forgot.php");
 
 }else{
 

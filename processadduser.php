@@ -71,7 +71,7 @@ $dateData = date('d M Y h:i:s A');
     //save in the database;
     save_user($userObject);
 
-    $_SESSION["message"] = "Registration Successful, you can now login " . $first_name;
+    $_SESSION["message"] = "You have Successfully added " . $first_name;
     redirect_to("login.php");
 }
 

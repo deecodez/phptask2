@@ -25,11 +25,11 @@
 
             <h3>Register</h3>
 
-            <p><strong>Welcome, Please Register</strong></p>
+            <p><strong>Welcome, Please Register a User</strong></p>
 
             <p>All Fileds are required</p>
 
-            <form action="processregister.php" method="POST">
+            <form action="processadduser.php" method="POST">
 
                 <p>
                     <?php  print_alert(); ?>
@@ -159,12 +159,10 @@
                
 
                 <p>
-                    <button class="btn btn-sm btn-primary" type="submit">Register</button>
+                    <button class="btn btn-sm btn-primary" type="submit">Add User</button>
                 </p>
 
-                <p>
-                   Already have an account?  <a href="login.php">Login</a>
-                </p>
+                
 
             </div>
         </div>

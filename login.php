@@ -4,47 +4,51 @@
 
 
 
-<div class="container mt-5 pt-5">
+<div class="container login_page">
     <div class="row">
 
-        <div class="col-md-3 offset-md-3">
+        
+        <div class="card login_card">
 
             <h3>Login</h3>
 
-            <p>Welcome Back, Please Login </p>
+            <p class="text-center">Welcome Back, Please Login </p>
+            <p class="text-center">Don't have an account? <a href="register.php">Register</a> </p>
 
             <p>
                 <?php  print_alert(); ?>
             </p>
 
             <form action="processlogin.php" method="POST">
+            <div class="form_details">
 
                 <p>
-                    <label>Email</label><br />
+                    <label><b>Email</b></label><br />
                     <input
                     <?php              
                     if(isset($_SESSION['email'])){
                         echo "value=" . $_SESSION['email'];                                                             
                     }                
                 ?>
-                    type="text" class="form-control" name="email" placeholder="Email" />
+                    type="text"name="email" placeholder="Email" />
                 </p>
 
                 <p>
-                    <label>Password</label><br />
-                    <input type="password" class="form-control" name="password" placeholder="password" />
+                    <label><b>Password</b></label><br />
+                    <input type="password" name="password" placeholder="password" />
                 </p>
 
                 <p>
                 <button class="btn btn-sm btn-primary" type="submit">Login</button>
             </p>
             <p>
-                <a href="forgot.php">Forgot Password</a><br />
-                <a href="register.php">Don't have an account? Register</a>
+                Forgot Password?<a href="forgot.php"> Reset Here</a><br />
             </p>
-
+            
+            </div>
             </form>
-
+            
+           
         </div>
     </div>
 </div>

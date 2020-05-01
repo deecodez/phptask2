@@ -1,35 +1,31 @@
 <?php include_once('lib/header.php');
  require_once('functions/alert.php');
  require_once('functions/redirect.php');
-
- if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
-    // redirect to dashboard
-    if($userObject->designation == 'Patient'){
-        redirect_to("patient.php");
-    }else{
-        redirect_to("medicalteam.php"); 
-    }
-        
-        die();
-    }
+ require_once('functions/user.php');
 
  
- ?>
+ if(!isset($_SESSION['loggedIn'])){
+    // redirect to dashboard
+    $_SESSION["error"] = "You can't book an appointment without login ";
+    redirect_to("login.php");
+} 
 
 
+?>
 
 
 <div class="container mt-5">
     <div class="row mt-5">
         <div class="col-md-3 offset-md-3 mt-5">
 
-            <h3>Register</h3>
+            <h3>Book An Appointment</h3>
 
-            <p><strong>Welcome, Please Register</strong></p>
+            <p><strong>Please the fill the form below to book an appointment</strong></p>
 
             <p>All Fileds are required</p>
 
-            <form action="processregister.php" method="POST">
+            <form action="processappoinment.php" method="POST">
+
 
                 <p>
                     <?php  print_alert(); ?>
@@ -57,24 +53,26 @@
                     type="text" class="form-control" name="last_name" placeholder="Last Name" pattern="[a-zA-Z][a-zA-Z ]{2,}" />
                 </p>
 
-                
-
-                
-
                 <p>
                     <label>Email</label><br />
                     <input
                     <?php              
                     if(isset($_SESSION['email'])){
-                        echo "value=" . $_SESSION['email'];                                                             
+                        $_SESSION['email'];                                                             
                     }                
                 ?>
-                    type="email" class="form-control" name="email" placeholder="Email" />
+                    type="text" class="form-control" name="email" placeholder="Email" />
                 </p>
 
                 <p>
-                    <label>Password</label><br />
-                    <input type="password" class="form-control" name="password" placeholder="password" />
+                    <label>Address</label><br />
+                    <input
+                    <?php              
+                    if(isset($_SESSION['address'])){
+                        echo "value=" . $_SESSION['address'];                                                             
+                    }                
+                ?>
+                    type="text" class="form-control" name="address" placeholder="Address" />
                 </p>
 
                 <p>
@@ -99,28 +97,18 @@
                 </p>
 
                 <p>
-                <label>Designation</label><br />
-                <select class="form-control" name="designation" >
-                
-                    <option value="">Select One</option>
-                    <option 
+                    <label>Phone Number</label><br />
+                    <input
                     <?php              
-                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Medical Team (MT)'){
-                            echo "selected";                                                           
-                        }                
+                    if(isset($_SESSION['phoneno'])){
+                        echo "value=" . $_SESSION['phoneno'];                                                             
+                    }                
                     ?>
-                    >Medical Team (MT)</option>
-                    <option 
-                    <?php              
-                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Patient'){
-                            echo "selected";                                                           
-                        }                
-                    ?>
-                    >Patient</option>
-                </select>
-            </p>
+                    type="text" class="form-control" name="phoneno" placeholder="Phone Number" />
+                </p>
 
-            <label>Department</label><br />
+                <p>
+                <label>Department</label><br />
                 <select class="form-control" name="department" >
                 
                     <option value="">Select One</option>
@@ -153,25 +141,67 @@
                     ?>
                     >Orthopedic</option>
                 </select>
+                </p>
+
+                
+
+                <p>
+                    <label>Enter Appointment Date </label><br />
+                    <input
+                    <?php              
+                    if(isset($_SESSION['doa'])){
+                        echo "value=" . $_SESSION['doa'];                                                             
+                    }                
+                    ?>
+                    type="date" class="form-control" name="doa" placeholder="Choose Date" />
+                </p>
+
+                <p>
+                    <label>Select Time of Appointment</label><br />
+                    <select class="form-control" name="toa" >
+                        <option value="">Select One</option>
+                        <option
+                        <?php              
+                        if(isset($_SESSION['toa']) && $_SESSION['toa'] == '10am-12noon'){
+                            echo "selected";                                                           
+                        }                
+                        ?>
+                        >10am-12noon</option>
+                        <option
+                        <?php              
+                        if(isset($_SESSION['toa']) && $_SESSION['toa'] == '1pm-3pm'){
+                            echo "selected";                                                           
+                        }                
+                        ?>
+                        >1pm-3pm</option>
+                        <option
+                        <?php              
+                        if(isset($_SESSION['toa']) && $_SESSION['toa'] == '4pm-6pm'){
+                            echo "selected";                                                           
+                        }                
+                        ?>
+                        >4pm-6pm</option>
+                    </select>
+                </p>
+
+                
+
+            <p>
+                <label>Initial Complaint</label>
+                <textarea class="form-control" name="initial_complaint" id="initial_complaint" cols="30" rows="10"></textarea>
             </p>
-  
 
-               
+            <p>
+                <label>Appointment Reasons</label>
+                <textarea class="form-control" name="appoinment_reason" id="appoinment_reason" cols="30" rows="10"></textarea>
+            </p>
 
-                <p>
-                    <button class="btn btn-sm btn-primary" type="submit">Register</button>
-                </p>
-
-                <p>
-                   Already have an account?  <a href="login.php">Login</a>
-                </p>
-
+            <p>
+                <button class="btn btn-sm btn-primary" type="submit">Submit Request</button>
+            </p>
             </div>
         </div>
     </div>
 </form>
 
 <?php include_once('lib/footer.php'); ?>
-
-
-
