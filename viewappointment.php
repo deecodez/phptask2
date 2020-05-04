@@ -62,7 +62,7 @@ for($i =2; $i < count($userlist); $i++){
                 $email = $appointmentObject ->email;
 
                 //get patient data from user table
-                $patientString = file_get_contents("db/users/". email.".json");
+                $patientString = file_get_contents("db/users/". $email.".json");
                 $patientObject = json_decode($patientString);
                 $firstname = $patientObject ->first_name;
                 $lastname = $patientObject ->last_name;
