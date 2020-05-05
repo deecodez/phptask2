@@ -7,8 +7,12 @@
   
     // Scan appointment and user database
     $allAppointmentlist = scandir("db/appointment/");
-    $userlist = scandir("db/users/");
+    $allTransactionlist = scandir("db/payment/");
 
+    
+    $userlist = scandir("db/users/");
+    // print_r($allTransactionlist );
+    // die();
      
     echo "
     <div class='table_content'>
@@ -21,6 +25,7 @@
         <th>Initial Complaint</th>
         <th>Department</th>
         <th>Register Date</th>
+        <th>Payment Status</th>
     </tr>";
 
 
@@ -72,6 +77,8 @@ for($i =2; $i < count($userlist); $i++){
                 $designation = $patientObject ->designation;
                 $datereg = $patientObject ->datereg;
                 $id = $patientObject ->id;
+
+          
 
                 
 

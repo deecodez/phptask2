@@ -12,6 +12,7 @@ if(isset($_POST['pay']))
   $email = $_POST['email'] != "" ? $_POST['email'] :  $errorCount++;
   $phoneno = $_POST['phoneno'] != "" ? $_POST['phoneno'] :  $errorCount++;
   $billamount = $_POST['amount'] != "" ? $_POST['amount'] :  $errorCount++;
+  $department = $_POST['department'] != "" ? $_POST['department'] :  $errorCount++;
 
 
 
@@ -20,6 +21,7 @@ if(isset($_POST['pay']))
   $_SESSION['email'] = $email;
   $_SESSION['phoneno'] = $phoneno;
   $_SESSION['amount'] = $billamount;
+  $_SESSION['department'] = $department;
  
   //conacantinating both customer first and last name together
 
@@ -32,11 +34,13 @@ $curl = curl_init();
 $customer_name = $_SESSION['customer_fullname'];
 
 $customer_email = $_SESSION['email'];
+$customer_department = $_SESSION['department'];
 $amount = $_SESSION['amount']; 
 $currency = "NGN";
 $txref = genTxref(); // ensure you generate unique references per transaction.
 $PBFPubKey = "FLWPUBK_TEST-f36c2e95aa8d260ed4a0ed1b5e262062-X"; // get your public key from the dashboard.
 $redirect_url = "http://localhost/phptask2/processpayment.php";
+$payment_type ='card';
 
 
 curl_setopt_array($curl, array(
@@ -46,8 +50,10 @@ curl_setopt_array($curl, array(
   CURLOPT_POSTFIELDS => json_encode([
     'amount'=>$amount,
     'customer_email'=>$customer_email,
-    'customer_name'=>$customer_name,
-    
+    'customer_department'=>$customer_department,
+    'customer_firstname'=>$first_name,
+    'customer_lastname'=>$last_name,
+    'payment_type' =>$payment_type,
     'currency'=>$currency,
     'txref'=>$txref,
     'PBFPubKey'=>$PBFPubKey,

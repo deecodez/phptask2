@@ -33,5 +33,7 @@ function set_alert($type = "message", $content = ""){
         default:
         $_SESSION['message'] = $content;
     break;
+
+    unset($_SESSION["message"]);
     }
 }
