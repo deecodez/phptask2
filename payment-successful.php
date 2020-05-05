@@ -1,5 +1,5 @@
 <?php
 
-echo "next stage";
+echo "Payment succesful";
 
 ?>

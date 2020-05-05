@@ -16,9 +16,9 @@
     <div class="row mt-5">
         <div class="col-md-3 offset-md-3 mt-5">
 
-            <h3>Book An Appointment</h3>
+            <h3>BILL PAYMENT</h3>
 
-            <p><strong>Please the fill the form below to book an appointment</strong></p>
+            <p><strong>Please the fill the form below to pay your bills for your appointment to be accepted</strong></p>
 
             <p>All Fileds are required</p>
 
@@ -79,21 +79,8 @@
                 
                     <option value="">Select Amount</option>
                     <option value="20000" >&#8358;20000</option>
-                    <option value="20000" >&#8358;40000</option>
-                    <!-- <option 
-                    <?php              
-                        if(isset($_SESSION['amount']) && $_SESSION['amount'] == '20000'){
-                            echo "20000";                                                           
-                        }                
-                    ?>
-                    >20000</option>
-                    <option 
-                    <?php              
-                        if(isset($_SESSION['amount']) && $_SESSION['amount'] == '40000'){
-                            echo "40000";                                                           
-                        }                
-                    ?>
-                    >40000</option> -->
+                    <option value="40000" >&#8358;40000</option>
+                    
                     
                 </select>
 

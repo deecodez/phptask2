@@ -10,7 +10,7 @@ function storeTime($email)
 
 storeTime($_SESSION['email']);
 
-session_unset();
+session_unset($email);
 session_destroy();
 
 

@@ -23,6 +23,7 @@ $_SESSION['designation'] = $designation;
 $_SESSION['department'] = $department;
 $_SESSION['fullname'] = $first_name . " " . $last_name;
 
+
 if($errorCount > 0){
 
      $session_error = "You have " . $errorCount . " error";

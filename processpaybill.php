@@ -1,43 +1,42 @@
 <?php
-
+session_start();
+require_once('functions/textref.php');
 if(isset($_POST['pay']))
 {
-    $firstname = $_POST['first_name'];
-    $lastname = $_POST['last_name'];
-    $email = $_POST['email'];
-    $phoneno = $_POST['phoneno'];
-    $billamount = $_POST['amount'];
-    $department = $_POST['department'];
-
-    // print_r($billamount);
-    // die();
 
 
-// use to debug to get user details payment, will be removed later 
+  //first step in collecting customer payment
+
+  $first_name = $_POST['first_name'] != "" ? $_POST['first_name'] :  $errorCount++;
+  $last_name = $_POST['last_name'] != "" ? $_POST['last_name'] :  $errorCount++;
+  $email = $_POST['email'] != "" ? $_POST['email'] :  $errorCount++;
+  $phoneno = $_POST['phoneno'] != "" ? $_POST['phoneno'] :  $errorCount++;
+  $billamount = $_POST['amount'] != "" ? $_POST['amount'] :  $errorCount++;
 
 
-// echo $firstname . '<br>';
 
-// echo $lastname . '<br>';
-// echo $email . '<br>';
-// echo $phoneno . '<br>';
-// echo $billamount . '<br>';
-// echo $department . '<br>';
+  $_SESSION['first_name'] = $first_name;
+  $_SESSION['last_name'] = $last_name;
+  $_SESSION['email'] = $email;
+  $_SESSION['phoneno'] = $phoneno;
+  $_SESSION['amount'] = $billamount;
+ 
+  //conacantinating both customer first and last name together
+
+$_SESSION['customer_fullname'] = $first_name . " " . $last_name;
+
+
 
 $curl = curl_init();
  
-$customer_email = $email;
-$amount = $billamount; 
+$customer_name = $_SESSION['customer_fullname'];
 
-
-// I was having problem when the flutterwave popup the amt was showing undefined
-//  print_r($amount);
-//  print_r($email);
-//     die();
+$customer_email = $_SESSION['email'];
+$amount = $_SESSION['amount']; 
 $currency = "NGN";
-$txref = "rave-29933444gugpppdddfffffd8617eeddfsdfff3gsag"; // ensure you generate unique references per transaction.
+$txref = genTxref(); // ensure you generate unique references per transaction.
 $PBFPubKey = "FLWPUBK_TEST-f36c2e95aa8d260ed4a0ed1b5e262062-X"; // get your public key from the dashboard.
-$redirect_url = "http://localhost/phptask2/payment-successful.php";
+$redirect_url = "http://localhost/phptask2/processpayment.php";
 
 
 curl_setopt_array($curl, array(
@@ -47,16 +46,23 @@ curl_setopt_array($curl, array(
   CURLOPT_POSTFIELDS => json_encode([
     'amount'=>$amount,
     'customer_email'=>$customer_email,
+    'customer_name'=>$customer_name,
+    
     'currency'=>$currency,
     'txref'=>$txref,
     'PBFPubKey'=>$PBFPubKey,
     'redirect_url'=>$redirect_url,
+
+  
   ]),
   CURLOPT_HTTPHEADER => [
     "content-type: application/json",
     "cache-control: no-cache"
   ],
 ));
+
+
+;
 
 $response = curl_exec($curl);
 $err = curl_error($curl);

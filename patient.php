@@ -5,6 +5,9 @@
 if(!isset($_SESSION['loggedIn'])){
     // redirect to dashboard
     redirect_to("login.php");
+  
+
+    session_destroy();
 }
 
 function fetchDate($email)
